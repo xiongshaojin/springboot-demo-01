@@ -1,7 +1,6 @@
 package com.example.springbootdemo.controller;
 
 
-
 import com.example.springbootdemo.entity.User;
 import com.example.springbootdemo.service.UserService;
 import org.slf4j.Logger;
@@ -21,59 +20,46 @@ public class UserController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private UserService userService;
+
     /**
      * 保存user信息
+     *
      * @param id
      * @param name
      * @param age
      */
     @RequestMapping("/set")
-    public void set(String id,String name,int age){
-        User user = new User(age,id,name);
+    public void set(String id, String name, int age) {
+        User user = new User(age, id, name);
         userService.save(user);
     }
 
     /**
      * 指定id的数据
+     *
      * @param id
      * @return
      */
     @RequestMapping("get/{id}")
-    public User get(@PathVariable("id") String id){
+    public User get(@PathVariable("id") String id) {
         User user = userService.getUser(id);
         return user;
     }
 
     /**
-     *
      * @param user
      */
     @RequestMapping("/updateUser")
-    public void updateUser(User user){
+    public void updateUser(User user) {
         userService.updateByPrimaryKey(user);
     }
 
     /**
-     *
      * @param id
      */
     @RequestMapping("/delete/{id}")
-    public void delete(@PathVariable("id") String id){
+    public void delete(@PathVariable("id") String id) {
         userService.deleteByPrimaryKey(id);
     }
 }
-/**
- * 第一次修改
- */
 
-/**
- * 测试合并分支
- * ；正常合并
- */
-
-/**
- * 测试合并分支
- * ：冲突合并
- * master change
- * develop change
- */
